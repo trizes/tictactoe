@@ -16,7 +16,4 @@ ActiveRecord::Schema.define(version: 2019_12_19_162800) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-# Could not dump table "games" because of following StandardError
-#   Unknown type 'game_status' for column 'status'
-
 end
