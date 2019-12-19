@@ -7,4 +7,7 @@ class Game < ApplicationRecord
   }.freeze
 
   enum status: STATUSES
+
+  validates_length_of :board, is: 9
+  validates_presence_of :status
 end

@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration[6.0]
     SQL
 
     create_table :games, id: :uuid do |t|
-      t.string :board
+      t.string :board, default: ''
       t.column :status, :game_status, default: 'RUNNING'
 
       t.timestamps
