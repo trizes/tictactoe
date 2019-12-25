@@ -9,6 +9,10 @@ class Api::V1::GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
+
+      # Response by MoveFinder
+      game.make_a_move!
+
       render json: { location: api_v1_game_url(@game.id) }, status: 201, location: api_v1_game_url(@game.id)
     else
       render json: { errors: @game.errors.messages }, status: :bad_request
@@ -20,11 +24,11 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def update
-    game
-
     if game.update(game_params)
-      # make a move
-      game
+
+      # Response by MoveFinder
+      game.make_a_move!
+
       render json: Api::V1::GamesSerializer.new.serialize(game)
     else
       render json: { errors: game.errors.messages }, status: :bad_request
